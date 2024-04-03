@@ -1,9 +1,11 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { BsTwitter, BsBell, BsEnvelope, BsBookmark } from "react-icons/bs";
 import { BiHomeCircle, BiHash, BiUser, BiMoney } from "react-icons/bi";
 import FeedCard from "@/components/FeedCard";
 import { SlOptions } from "react-icons/sl";
+import GoogleLoginComp from "@/components/GoogleLogin";
 
 interface TwitterSidebarButton {
   title: string;
@@ -46,6 +48,8 @@ const SidebarMenuitems: TwitterSidebarButton[] = [
 ];
 
 export default function Home() {
+  const [handleLogin, setHandleLogin] = useState();
+
   return (
     <div>
       <div className="grid grid-cols-12 h-screen w-screen px-56 overflow-x-hidden">
@@ -82,7 +86,12 @@ export default function Home() {
           <FeedCard />
           <FeedCard />
         </div>
-        <div className="col-span-3"></div>
+        <div className="col-span-3">
+          <div className="rounded-lg">
+            <h1 className="my-2 text-2xl">New to twitter</h1>
+            <GoogleLoginComp />
+          </div>
+        </div>
       </div>
     </div>
   );

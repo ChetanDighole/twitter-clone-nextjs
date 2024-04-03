@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import { Inter, Quicksand } from "next/font/google";
 import "./globals.css";
+import { useState, useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 const quicksand = Inter({ subsets: ["latin"], display: "swap" });
@@ -16,8 +18,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <>
+      <GoogleOAuthProvider clientId="857503434662-r7bkg8jt9tgobpnps7bo64r7d307mtk9.apps.googleusercontent.com">
+        <html lang="en">
+          <body className={inter.className}>{children}</body>
+        </html>
+      </GoogleOAuthProvider>
+    </>
   );
 }
